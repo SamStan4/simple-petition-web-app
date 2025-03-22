@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="/scripts/formScript.js" defer></script>
+</head>
+<body>
+    <nav class="h-[40px] w-full bg-[#494949] border-t-[10px] border-[#383838] flex items-center justify-center gap-[20px]">
+        <button class="bg-transparent text-white border-none">Home</button>
+        <button class="bg-transparent text-white border-none">About</button>
+        <button class="bg-transparent text-white border-none">Categories</button>
+        <button class="bg-transparent text-white border-none">Contact</button>
+    </nav>
+    <div class="flex items-center justify-center">
+        <div class="mt-[30px] w-[50%] min-h-[500px] bg-[#FFFFFF] rounded-[10px] shadow-[0_0_5px_rgba(0,0,0,0.3)] p-4 flex flex-col items-center">
+            <h1 class="text-[40px] text-[#004DA5]">Move CPTS 498 to Afternoon in Winter</h1>
+            <div class="mt-[2px] flex flex-row justify-center gap-[2px] w-[90%]">
+                <p>
+                    The image you see on the right is a representation of our professor every morning, right before his much-needed 
+                    coffee that helps thaw him out a bit. Imagine having to wake up at 4 or 5 AM in the dead of winter just to prepare 
+                    for class. Technically, since the sun hasn’t even risen yet, can we really call 4 AM "morning"? The frigid cold, 
+                    combined with the mental fog of early hours, is an unfair battle both for students and faculty alike. No one should 
+                    have to endure sub-zero temperatures just to attend an 8 AM lecture. Morning brain freeze inevitably leads to null 
+                    pointer exceptions in our heads! For these reasons, we humbly request the administration to consider shifting CPTS 489 
+                    to a more humane afternoon time slot.
+                </p>
+                <img src="/media/prof.jpg" alt="frozen professor" class="w-[25%] h-[25%]">
+            </div>
+            <h2 class="mt-[50px] text-[20px] text-[#8B3232] font-bold">Sign The Petition</h2>
+            <form onsubmit="return validateForm()" method="post" action="/form/submit" class="flex flex-col items-center gap-[10px] mt-[5px] w-[90%]">
+                <input type="text" name="name" id="name" placeholder="Your Name" class="pl-[14px] h-[30px] w-full m-0 border border-[#c5c5c5] rounded-[2px] placeholder:ml-[5px]"/>
+                <input type="email" name="email" id="email" placeholder="Your Email" class="pl-[14px] h-[30px] w-full m-0 border border-[#c5c5c5] rounded-[2px]"/>
+                <input type="text" name="city" id="city" placeholder="City" class="pl-[14px] h-[30px] w-full m-0 border border-[#c5c5c5] rounded-[2px] placeholder:ml-[5px]"/>
+                <input type="text" name="state" id="state" placeholder="State (e.g. WA)" class="pl-[14px] h-[30px] w-full m-0 border border-[#c5c5c5] rounded-[2px] placeholder:ml-[5px]"/>
+                <input type="submit" value="Sign Petition" class="w-full h-[40px] bg-[#0058DB] text-[#FFFFFF] rounded-[10px]">
+            </form>
+            <h2 class="mt-[30px] text-[20px] text-[#8B3232] font-bold">Signatures</h2>
+            <div class="flex flex-row h-[30px] w-[90%]">
+                <div class="h-full w-[45%] border-[1px] border-[#CCCCCC] flex items-center">
+                    <h3 class="ml-[10px] font-bold">Name</h3>
+                </div>
+                <div class="h-full w-[30%] border-t-[1px] border-b-[1px] border-[#CCCCCC] flex items-center">
+                    <h3 class="ml-[10px] font-bold">City</h3>
+                </div>
+                <div class="h-full w-[25%] border-[1px] border-[#CCCCCC] flex items-center">
+                    <h3 class="ml-[10px] font-bold">State</h3>
+                </div>
+            </div>
+            <% signatures.forEach((signature, i) => { %>
+                <% if(i % 2 === 0) { %>
+                    <div class="flex flex-row h-[30px] w-[90%] mt-[0px]">
+                        <div class="bg-[#DDDDDD] h-full w-[45%] border-b-[1px] border-l-[1px] border-r-[1px] border-[#CCCCCC] flex items-center">
+                            <h3 class="ml-[10px]"><%= signature.signatureName %></h3>
+                        </div>
+                        <div class="bg-[#DDDDDD] h-full w-[30%] border-b-[1px] border-[#CCCCCC] flex items-center">
+                            <h3 class="ml-[10px]"><%= signature.signatureCity %></h3>
+                        </div>
+                        <div class="bg-[#DDDDDD] h-full w-[25%] border-b-[1px] border-l-[1px] border-r-[1px] border-[#CCCCCC] flex items-center">
+                            <h3 class="ml-[10px]"><%= signature.signatureState %></h3>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="flex flex-row h-[30px] w-[90%] mt-[0px]">
+                        <div class="h-full w-[45%] border-b-[1px] border-l-[1px] border-r-[1px] border-[#CCCCCC] flex items-center">
+                            <h3 class="ml-[10px]"><%= signature.signatureName %></h3>
+                        </div>
+                        <div class="h-full w-[30%] border-b-[1px] border-[#CCCCCC] flex items-center">
+                            <h3 class="ml-[10px]"><%= signature.signatureCity %></h3>
+                        </div>
+                        <div class="h-full w-[25%] border-b-[1px] border-l-[1px] border-r-[1px] border-[#CCCCCC] flex items-center">
+                            <h3 class="ml-[10px]"><%= signature.signatureState %></h3>
+                        </div>
+                    </div>
+                <% } %>
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>
