@@ -6,4 +6,4 @@ chmod +x StartServer.sh
 ./StartServer.sh
 ```
 ## Once running:
-### Navigate to `http://127.0.0.1:<your port here>/view/petition`
+### Navigate to `http://127.0.0.1:<your port here>/views/petition`
